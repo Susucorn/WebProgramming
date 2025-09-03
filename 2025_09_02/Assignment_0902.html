@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기 소개 하기</title>
+    <!-- CSS로 스타일 추가 -->
+    <style>
+        body { background-color: antiquewhite; } /* 웹 문서의 배경 색 지정 */
+        h1 { text-align: center; color: rgb(80, 31, 8);} /* 텍스트 가운데 정렬; 텍스트 색깔; */
+        hr { height: 5px; border: solid gray; background-color: gray; } /* 선의 두께와 색깔 조정*/
+        span { color: palevioletred; font-size: 20px; } /* span 태그로 묶인 텍스드의 색깔과 크기 조정*/
+    </style>
+
+    <!-- JavaScript로 동적 기능 추가-->
+    <script>
+        function show() {
+            document.getElementById("fig").src="img/cookie.jpg"
+            /* src="이미지가 있는 경로" */
+        }
+        function hide() {
+            document.getElementById("fig").src="";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>나를 소개합니다.</h1>
+    <hr> <!-- 선을 긋는다 -->
+    <div>
+        <h3 onmouseover="show()" onmouseout="hide()">마우스를 올려보세요</h3> <!-- 마우스를 올렸을 때, 올리지 않았을 때-->
+        <img id="fig" src="" width="200"> <!-- 이미지 사이즈 조정이 필요함 -->
+    </div>
+
+    <p>
+        안녕하세요. 신라대학교 컴퓨터공학부 2학년 <span>박수연</span> 입니다.<br>
+        이번 2학년 2학기 <span>웹 프로그래밍</span> 수업은 <b>월,화 2교시와 3교시</b> 입니다.<br>
+        앞으로 다양한 프로그램들을 만들어 보면서 프로그래밍 실력을 쌓아가겠습니다.
+    </p>
+</body>
+</html>
