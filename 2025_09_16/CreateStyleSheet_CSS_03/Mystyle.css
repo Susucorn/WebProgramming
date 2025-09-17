@@ -1,0 +1,13 @@
+body {
+    background-color: lightblue;
+    color: blueviolet;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+h1{
+    text-align: center;
+    color: darkmagenta;
+}
+
+/* 대부분의 브라우저는 .css 파일을 자동 인식함, <style> 태그 없이 CSS3 스타일 시트만 저장할 것*/
