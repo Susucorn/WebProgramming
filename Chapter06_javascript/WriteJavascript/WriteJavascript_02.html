@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>script 태그 안에 자바스크립트 작성</title>
+    <!--자바스크립트 작성-->
+    <script>
+        function over(obj) {
+            obj.src="img/AI_커비그림.png";
+        }
+        function out(obj) {
+            obj.src="img/보라커비.jpg"
+        }
+    </script>
+</head>
+<body>
+    <h1>마우스를 올리면 그림이 바뀝니다.</h1>
+    <hr>
+    <!--함수 호출, this 는 img 태그를 가리킨다-->
+    <img src="img/AI_커비그림.png" width="300" height="300" alt="별의커비이미지사진"
+    onmouseover="over(this)"
+    onmouseout="out(this)">
+</body>
+</html>
