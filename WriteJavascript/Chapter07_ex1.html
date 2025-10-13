@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체와 배열</title>
+    <script>
+        // 난수 발생시키는 함수
+        function getRandom(min, max)
+        {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+    </script>
+</head>
+<body>
+    <h1>객체와 배열, 난수 10개 생성하기</h1>
+    <hr>
+    <script>
+        let arr = [];   // arr 배열 생성
+
+        // 난수 10개 생성, 배열에 저장하기
+        document.write("<h3>랜덤한 숫자 10개 저장 후 출력하기</h3>");
+        for(let i = 0; i < 10; i++) {
+            arr[i] = getRandom(1, 100);
+            document.write((i+1) + "번째 정수 : " + arr[i] + "<br>");
+        }    
+        document.write("<hr>");
+
+        // 제일 큰 수 찾기
+        let max = arr[0];   // 제일 큰 수를 비교하기 위한 변수
+        document.write("<h3>제일 큰 수 찾기</h3>");
+        for(let i = 0; i < arr.length; i++) {
+            if(arr[i] > max) {      // i번째 요소가 max 값에 들어있는 값보다 크다면
+                max = arr[i];       // max 값을 i번째 요소로 변경 
+            }
+        }
+        document.write("제일 큰 수 : " + max + "<br>");
+        document.write("<hr>");
+
+        // 배열 정렬 후 출력하기
+        document.write("<h3>배열 정렬 후 출력하기</h3>");
+        let arr1 = arr.sort((a, b) => a - b);   // 오름차순으로 정렬되게 하는 코드 부분(중요), sort() 함수가 문자열 기준으로 정렬하기 때문이다.
+        for(let i = 0; i < arr.length; i++) {
+            document.write((i+1) + "번째 정수 : " + arr1[i] + "<br>");
+        }
+    </script>
+</body>
+</html>
