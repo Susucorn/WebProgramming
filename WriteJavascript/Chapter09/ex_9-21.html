@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키 이벤트 응용</title>
+    <style>
+        td {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+
+    <!-- 자바스크립트 작성 -->
+    <script>
+        let tbs;
+        let prevIndex = 0, index = 0;
+
+        // 웹 페이지가 로딩되면 실행되는 함수
+        window.onload = function() {
+            tbs = document.getElementsByTagName("td");
+            tbs[index].style.backgroundColor = "blue";
+        }
+
+        // 사용자가 화살표 키를 누르면 keydown 이벤트가 발생
+        window.onkeydown = function(e) {
+            // switch 문으로 방향 판단하기
+            switch(e.key) {
+                // 아래 방향키를 누르면
+                case "ArrowDown" :
+                    if (index/3 >= 2) return;   // 현재 셀이 **마지막 행에 있다면 더 이상 아래로 이동하지 않음(바로 리턴)
+                    index += 3;                 // 아니라면 3을 더해 아래 셀로 이동 (한 행 아래는 인덱스 +3)
+                    break;
+
+                // 위 방향키를 누르면
+                case "ArrowUp" :
+                    if (index/3 < 1) return;    // 현재 셀이 첫 번째 행이면 위로 이동 불가(바로 리턴)
+                    index -= 3;                 // 아니라면 3을 빼서 위 셀로 이동
+                    break;
+                
+                // 왼쪽 방향키를 누르면
+                case "ArrowLeft" :
+                    if (index%3 == 0) return;   // 현재 셀이 맨 왼쪽 열이면 왼쪽 이동 불가(바로 리턴)
+                    index--;                    // 아니라면 1을 빼서 왼쪽 셀로 이동
+                    break;
+
+                // 오른쪽 방향키를 누르면
+                case "ArrowRight" :
+                    if (index%3 == 2) return;   // 현재 셀이 맨 오른쪽 열이면 오른쪽 이동 불가(바로 리턴)
+                    index++;                    // 아니라면 1을 더해서 오른쪽 셀로 이동
+                    break;
+            }
+
+            tbs[index].style.backgroundColor = "blue";      // 새로 이동한 셀의 배경색 지정
+            tbs[prevIndex].style.backgroundColor = "white"; // 이전 셀의 배경색 지정
+            prevIndex = index;                              // 이전 인덱스(prevIndex)를 현재 인덱스로 갱신
+        }
+    </script>
+</head>
+<body>
+    <h1>화살표 키로 셀  위로 이동하기</h1>
+    <hr>
+    <table>
+        <tr>
+            <td></td><td></td><td></td>
+        </tr>
+        <tr>
+            <td></td><td></td><td></td>
+        </tr>
+        <tr>
+            <td></td><td></td><td></td>
+        </tr>
+    </table>
+</body>
+</html>

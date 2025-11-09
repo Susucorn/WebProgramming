@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Infix to Postfix 계산기</title>
+  <style>
+    input {
+      width: 250px;
+      height: 50px;
+      margin: 10px;
+
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>Infix → Postfix 계산기</h2>
+  <hr>
+  <input type="text" id="expression" placeholder="수식을 입력하세요 (예: 3 + 4 * (2 - 1))">
+  <button onclick="convertAndShow()">=</button>
+
+  <script>
+    // Stack 객체 구현
+    class Stack {
+      constructor() {
+        this.items = [];
+      }
+      push(element) {
+        this.items.push(element);
+      }
+      pop() {
+        return this.items.pop();
+      }
+      peek() {
+        return this.items[this.items.length - 1];
+      }
+      isEmpty() {
+        return this.items.length === 0;
+      }
+    }
+
+    // 연산자 우선순위
+    const precedence = {
+      '+': 1,
+      '-': 1,
+      '*': 2,
+      '/': 2,
+      '^': 3
+    };
+
+    // infix → postfix 변환 함수
+    function infixToPostfix(infix) {
+      const output = [];
+      const stack = new Stack();
+      const tokens = infix.match(/(\d+|\+|\-|\*|\/|\^|\(|\))/g);
+
+      tokens.forEach(token => {
+        if (!isNaN(token)) {
+          output.push(token);
+        } else if (token === '(') {
+          stack.push(token);
+        } else if (token === ')') {
+          while (!stack.isEmpty() && stack.peek() !== '(') {
+            output.push(stack.pop());
+          }
+          stack.pop(); // '(' 제거
+        } else {
+          while (
+            !stack.isEmpty() &&
+            precedence[token] <= precedence[stack.peek()]
+          ) {
+            output.push(stack.pop());
+          }
+          stack.push(token);
+        }
+      });
+
+      while (!stack.isEmpty()) {
+        output.push(stack.pop());
+      }
+
+      return output.join(' ');
+    }
+
+    // 버튼 클릭 시 실행
+    function convertAndShow() {
+      const infix = document.getElementById('expression').value;
+      const postfix = infixToPostfix(infix);
+      alert(`Infix: ${infix}\nPostfix: ${postfix}`);
+      console.log(`Infix: ${infix}`);
+      console.log(`Postfix: ${postfix}`);
+    }
+  </script>
+</body>
+</html>

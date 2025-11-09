@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키 이벤트</title>
+    <style>
+        p {
+            font-size: 2em;
+            background-color: aquamarine;
+            border-radius: 50px;
+        }
+
+        input {
+            width: 250px;
+            height: 50px;
+            margin: 10px;
+        }
+
+        div {
+            background-color: skyblue;
+            width: 250px;
+            height: 50px;
+            margin: 10px;
+        }
+    </style>
+
+    <!-- 자바스크립트 작성 -->
+    <script>
+        function whatkeydown(e) {
+            let str = "";
+            let div = document.getElementById("div");
+            div.innerHTML = "";     // div 객체 내용 초기화
+            str += "e.key : " + e.key + "<br>";
+            str += "e.code : " + e.code + "<br>";
+            div.innerHTML = str;    // div 객체에 html 문자열 출력
+        }
+    </script>
+</head>
+<body>
+    <h1>키 리스너와 키 이벤트 객체의 프로퍼티</h1>
+    <hr>
+
+    <p>텍스트 창에 키를 눌러 보세요. Alt / Shift / Ctrl 키도 가능합니다.</p>
+    <input type="text" id="text"onkeydown="whatkeydown(event)">
+    <div id="div"></div>
+</body>
+</html>
